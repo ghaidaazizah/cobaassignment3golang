@@ -83,6 +83,10 @@ func ReadStudentsFromCSV(filename string) ([]model.Student, error) {
 	return students, nil
 }
 
+func (sm *InMemoryStudentManager) GetStudents() []model.Student {
+	return nil // TODO: replace this
+}
+
 func (sm *InMemoryStudentManager) Register(id string, name string, studyProgram string) (string, error) {
 	sm.Lock()
 	defer sm.Unlock()
@@ -145,6 +149,20 @@ func (sm *InMemoryStudentManager) ImportStudents(filenames []string) error {
 	}
 	wg.Wait()
 	return nil
+}
+
+func (sm *InMemoryStudentManager) GetStudyProgram(code string) (string, error) {
+	return "", nil // TODO: replace this
+}
+
+func (sm *InMemoryStudentManager) ModifyStudent(name string, fn model.StudentModifier) (string, error) {
+	return "", nil // TODO: replace this
+}
+
+func (sm *InMemoryStudentManager) ChangeStudyProgram(programStudi string) model.StudentModifier {
+	return func(s *model.Student) error {
+		return nil // TODO: replace this
+	}
 }
 
 func (sm *InMemoryStudentManager) SubmitAssignments(total int) {
